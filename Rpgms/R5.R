@@ -1,0 +1,31 @@
+dff<-data.frame(
+  id=c(1:7),
+  weight=c(20,27,24,22,23,25,28),
+  gender=c("male","female","female","male","male","female","male"),
+  smoking=c("no","yes","no","yes","yes","no","yes"),
+  tumour=c("small","large","medium","large","medium","large","small")
+)
+dff
+dff<-rbind(dff,c(8,26,"male","yes","small"))
+dff<-cbind(dff,state=c("ker","guj","punjab","TN","assam","karnataka","delhi","pune"))
+dff1<-data.frame(dff$id,dff$smoking)
+dff1
+dff<-dff[-1,]
+dff
+dff$c<-NULL
+dff
+names(dff)
+head(dff)
+tail(dff)
+dff<-edit(dff)
+dff2<-data.frame(id=c(2:8), bp=c("low","low","low","high","low","high","low"),
+      bmi=c("low","high","high","high","low","high","low"))
+dff3<-merge(dff,dff2,by="id")
+dff3
+ord_data<-dff[order(weight),]
+ord_data
+names(dff)[3]<-"gender1"
+names(dff)
+t(dff)
+split(dff,smoking)
+
