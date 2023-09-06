@@ -1,0 +1,21 @@
+df=read.csv("E:\\Rpgms\\Mall_Customers.csv")
+getwd()
+df<-na.omit(df)
+
+km<-kmeans(df,centers=3)
+df<-scale(df[,3:5])
+km<-kmeans(df,centers=2)
+library(factoextra)
+fviz_cluster(km,df)
+fviz_nbclust(df,kmeans)
+
+
+library(arules)
+library(arulesViz)
+md<-read.transactions("E:/Rpgms/Groceries_dataset.csv",sep=",")
+inspect(md)
+aoctn_rl<-apriori(md,list(support=0.01,confidence=0.01))
+inspect(aoctn_rl)
+summary(aoctn_rl)
+inspect(sort(aoctn_rl,by="lift")[1:5])
+plot(aoctn_rl,method = "graph",measure = "confidence",shading = "lift")
